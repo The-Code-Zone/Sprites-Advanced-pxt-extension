@@ -94,10 +94,10 @@ namespace spriteutils {
         game.onUpdate(() => {
             for (let sprite of sprites.allOfKind(kind)) {
                 if (sprite.left <= scene.cameraProperty(CameraProperty.Left) ||
-                    sprite.right <= scene.cameraProperty(CameraProperty.Right) ||
+                    sprite.right >= scene.cameraProperty(CameraProperty.Right) ||
                     sprite.top <= scene.cameraProperty(CameraProperty.Top) ||
-                    sprite.bottom <= scene.cameraProperty(CameraProperty.Bottom)) {
-                    handler
+                    sprite.bottom >= scene.cameraProperty(CameraProperty.Bottom)) {
+                    handler(sprite)
                 }
             }
         })
