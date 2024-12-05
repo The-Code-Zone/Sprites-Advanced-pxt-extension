@@ -79,4 +79,27 @@ namespace spriteutils {
     //         return condition
     //     })
     // }
+
+    /**
+    * The attached code will run when a sprite of that kind collides with the edge of the screen
+    * @param kind the sprite kind we check the collision on
+    * @param handler the code to run on the collision
+    */
+    //% group="Sprite"
+    //% weight=98 
+    //% blockId=onSpriteOfKindHitsEdgeOfScreen
+    //% draggableParameters="reporter"
+    //% block="on sprite of kind $kind=spritekind hits edge of screen"
+    export function onSpriteOfKindHitsEdgeOfScreen(kind: number, handler: (sprite: Sprite) => void) {
+        game.onUpdate(() => {
+            for (let sprite of sprites.allOfKind(kind)) {
+                if (sprite.left <= scene.cameraProperty(CameraProperty.Left) ||
+                    sprite.right <= scene.cameraProperty(CameraProperty.Right) ||
+                    sprite.top <= scene.cameraProperty(CameraProperty.Top) ||
+                    sprite.bottom <= scene.cameraProperty(CameraProperty.Bottom)) {
+                    handler
+                }
+            }
+        })
+    }
 }
