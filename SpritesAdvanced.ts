@@ -102,4 +102,33 @@ namespace spriteutils {
             }
         })
     }
+
+    /**
+    * places a given sprite on the edge of the screen in a random spot. does not work if the camera has moved
+    */
+    //% blockId=placeSpriteRandomlyOnEdge
+    //% block="place $sprite randomly on edge of screen"
+    //% sprite.defl=mySprite
+    //% sprite.shadow=variables_get
+    //% group="Sprite"
+    //% weight=20 
+    export function placeSpriteRandomlyOnEdge(sprite: Sprite){
+        let halfWidth = sprite.image.width;
+        let halfHeight = sprite.image.height;
+        let randNum = randint(1, 4);
+        switch(randNum) {
+            case 1: //top
+                sprite.bottom = 1;
+                sprite.x = randint(halfWidth, 160 - halfWidth);
+            case 2:
+                sprite.top = 119;
+                sprite.x = randint(halfWidth, 160 - halfWidth);
+            case 3:
+                sprite.right = 1;
+                sprite.y = randint(halfHeight, 120 - halfHeight);
+            case 4: 
+            sprite.left = 159;
+            sprite.y = randint(halfHeight, 120 - halfHeight);
+        }
+    }
 }
