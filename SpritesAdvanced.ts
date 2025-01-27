@@ -112,7 +112,7 @@ namespace spriteutils {
     //% sprite.shadow=variables_get
     //% group="Sprite"
     //% weight=20 
-    export function placeSpriteRandomlyOnEdge(sprite: Sprite) {
+    export function placeSpriteRandomlyOnEdge(sprite: Sprite): void {
         let halfWidth = sprite.image.width;
         let halfHeight = sprite.image.height;
         let randNum = randint(1, 4);
@@ -139,4 +139,19 @@ namespace spriteutils {
             }
         }
     }
+
+    /**
+    * increases the velocity of a sprite in the given direction at a defined increment
+    */
+    //% blockId=changeSpriteVelocityByAtAngle
+    //% block="change $sprite velocity by $increase at $angle"
+    //% sprite.defl=mySprite
+    //% sprite.shadow=variables_get
+    //% group="Sprite"
+    //% weight=20 
+    export function changeSpriteVelocityByAtAngle(sprite: Sprite, increase: number, angle: number): void {
+        sprite.vx += Math.sin(angle) * increase
+        sprite.vy += Math.cos(angle) * -increase
+    }
+
 }
