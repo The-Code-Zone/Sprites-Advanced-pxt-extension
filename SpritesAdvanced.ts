@@ -160,22 +160,17 @@ namespace sprites{
 
     /**
     * Make this sprite follow the target sprite.
-    *
-    * @param target the sprite this one should follow
-    * @param speed the rate at which this sprite should move, eg: 100
-    * @param turnRate how quickly the sprite should turn while following.
-    *      The default (400) will cause the sprite to reach max speed after approximately 125 ms when standing still,
-    *      and turn around 180 degrees when at max speed after approximately 250 ms.
+    * Duplicate function to allow blocks to access turnRate param
     */
     //% group="Physics" weight=9
     //% sprite.defl=myEnemy
     //% sprite.shadow=variables_get
     //% spriteToFollow.defl=mySprite
     //% spriteToFollow.shadow=variables_get
-    //% blockId=follow
+    //% blockId=followSprite
     //% block="set %sprite follow %spriteToFollow|| with speed %speed and turn rate %turnRate"
 
-    export function follow(sprite: Sprite, spriteToFollow: Sprite, speed = 100, turnRate = 400): void {
+    export function followSprite(sprite: Sprite, spriteToFollow: Sprite, speed = 100, turnRate = 400): void {
         sprite.follow(spriteToFollow, speed, turnRate)
     }
 
