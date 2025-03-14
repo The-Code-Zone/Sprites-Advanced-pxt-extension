@@ -89,7 +89,7 @@ namespace spriteutils {
     //% weight=98 
     //% blockId=onSpriteOfKindHitsEdgeOfScreen
     //% draggableParameters="reporter"
-    //% block="on sprite of kind $kind=spritekind hits edge of screen"
+    //% block="on $sprite of kind $kind=spritekind hits edge of screen"
     export function onSpriteOfKindHitsEdgeOfScreen(kind: number, handler: (sprite: Sprite) => void) {
         game.onUpdate(() => {
             for (let sprite of sprites.allOfKind(kind)) {
@@ -98,6 +98,29 @@ namespace spriteutils {
                     sprite.top <= scene.cameraProperty(CameraProperty.Top) ||
                     sprite.bottom >= scene.cameraProperty(CameraProperty.Bottom)) {
                     handler(sprite)
+                }
+            }
+        })
+    }
+
+    /**
+     * The attached code will run when a sprite of that kind leaves the tilemap
+     * @param kind the sprite kind we check the exit of
+     * @param handler the code to run on exit
+    */
+    //% group="Tile Comparisons"
+    //% weight=98 
+    //% blockId=onLeavingTilemap
+    //% block="on $sprite of kind $kind=spritekind leaves tilemap"
+    //% draggableParameters="reporter"
+    export function onLeavingTilemap(kind: number, handler: (sprite: Sprite) => void): void {
+        game.onUpdate(() => {
+            for (let sprite of sprites.allOfKind(kind)) {
+                let pos = sprite.tilemapLocation();
+                let mapWidth = game.currentScene().tileMap.data.width;
+                let mapHeight = game.currentScene().tileMap.data.height;
+                if (pos.col < 0 || pos.col > mapWidth - 1 || pos.row < 0 || pos.row > mapHeight - 1) {
+                    handler(sprite);
                 }
             }
         })
