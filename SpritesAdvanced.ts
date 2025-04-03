@@ -189,7 +189,7 @@ namespace spriteutils {
     export function getDistanceBetweenPoints(x1: number, y1: number, x2: number, y2: number): number {
         let a = x1 - x2
         let b = y1 - y2
-        let c_squared = a ^ 2 + b ^ 2
+        let c_squared = a ** 2 + b ** 2
         return Math.sqrt(c_squared)
     }
 
