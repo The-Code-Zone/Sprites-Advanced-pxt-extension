@@ -177,6 +177,23 @@ namespace spriteutils {
         sprite.vy += Math.cos(angle) * -increase
     }
 
+
+    /**
+    * get the distance between two given points
+    */
+    //% blockId=getDistanceBetweenPoints
+    //% block="get distance between x: $x1 y: $y1 and x: $x2 y: $y2"
+    //% group="General"
+    //% inlineInputMode=inline
+    //% weight=20 
+    export function getDistanceBetweenPoints(x1: number, y1: number, x2: number, y2: number): number {
+        let a = x1 - x2
+        let b = y1 - y2
+        let c_squared = a ^ 2 + b ^ 2
+        return Math.sqrt(c_squared)
+    }
+
+
 }
 
 namespace sprites{
