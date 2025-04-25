@@ -1,3 +1,17 @@
+namespace Math {
+
+    /**
+     * Returns the sign of the number
+     */
+    //% blockId=getSign
+    //% block="get sign of $num"
+    //% weight=50
+    export function getSign(num: number): number {
+        return Math.sign(num);
+    }
+
+}
+
 namespace spriteutils {
 
     let framesPerSecond: number = 0;
