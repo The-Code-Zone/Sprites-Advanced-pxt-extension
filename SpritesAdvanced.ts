@@ -207,6 +207,27 @@ namespace spriteutils {
         return Math.sqrt(c_squared)
     }
 
+    /**
+    * Make the sprite follow another sprite and rotate its image based on it's velocity
+    */
+    //% blockId=followAndRotate
+    //% block="set %sprite follow %spriteToFollow and rotate|| with speed %speed and turn rate %turnRate"
+    //% group="Sprite"
+    //% sprite.defl=myEnemy
+    //% sprite.shadow=variables_get
+    //% spriteToFollow.defl=mySprite
+    //% spriteToFollow.shadow=variables_get
+    //% inlineInputMode=inline
+    //% weight=20 
+    export function followAndRotate(sprite: Sprite, spriteToFollow: Sprite, speed = 100, turnRate = 400) {
+        sprite.follow(spriteToFollow, speed, turnRate)
+        game.onUpdate(() => {
+            let angleInRads = heading(sprite)
+            let angleInDegrees = radiansToDegrees(angleInRads) + 90
+            transformSprites.rotateSprite(sprite, angleInDegrees)
+        })
+    }
+
 
 }
 
