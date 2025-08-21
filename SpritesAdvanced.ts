@@ -250,7 +250,7 @@ namespace spriteutils {
             let y = sprites.readDataNumber(sprite, "y")
             let cameraLeft = scene.cameraProperty(CameraProperty.Left)
             let cameraTop = scene.cameraProperty(CameraProperty.Top)
-            sprite.setPosition(x + cameraLeft, y + cameraTop)
+            sprite.setPosition(x - cameraLeft, y - cameraTop)
         })
     }
 
