@@ -246,8 +246,8 @@ namespace spriteutils {
         sprites.setDataNumber(sprite, "screenX", sprite.x)
         sprites.setDataNumber(sprite, "screenY", sprite.y)
         game.onUpdate( () => {
-            let x = sprites.readDataNumber(sprite, "x")
-            let y = sprites.readDataNumber(sprite, "y")
+            let x = sprites.readDataNumber(sprite, "screenX")
+            let y = sprites.readDataNumber(sprite, "screenY")
             let cameraLeft = scene.cameraProperty(CameraProperty.Left)
             let cameraTop = scene.cameraProperty(CameraProperty.Top)
             sprite.setPosition(x - cameraLeft, y - cameraTop)
