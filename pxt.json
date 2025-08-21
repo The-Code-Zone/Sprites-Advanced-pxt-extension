@@ -5,7 +5,8 @@
     "dependencies": {
         "device": "*",
         "arcade-sprite-util": "github:jwunderl/arcade-sprite-util#v0.4.1",
-        "pxt-arcade-image-transform": "github:Llywelwyn/pxt-arcade-image-transform#cc49d72e2e8a142723b32396490505bb3194b7d0"
+        "pxt-arcade-image-transform": "github:Llywelwyn/pxt-arcade-image-transform#cc49d72e2e8a142723b32396490505bb3194b7d0",
+        "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.2.1"
     },
     "files": [
         "README.md",

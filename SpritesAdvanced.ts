@@ -228,6 +228,47 @@ namespace spriteutils {
         })
     }
 
+    /**
+    * Position the given sprite relative to screen position but still able to overlap other sprites
+    */
+    //% blockId=setRelativeToCameraAndOverlapable
+    //% block="set $sprite position relative to camera and overlapable $on"
+    //% group="Sprite"
+    //% sprite.defl=mySprite
+    //% sprite.shadow=variables_get
+    //% on.shadow="toggleOnOff"
+    //% weight=2
+    export function setRelativeToCameraAndOverlapable(sprite: Sprite, on: boolean) {
+        sprite.setFlag(SpriteFlag.GhostThroughSprites, false)
+        sprite.setFlag(SpriteFlag.GhostThroughWalls, true)
+        sprite.setFlag(SpriteFlag.GhostThroughTiles, true)
+        sprites.setDataBoolean(sprite, "relativeToCamera", true)
+        sprites.setDataNumber(sprite, "screenX", sprite.x)
+        sprites.setDataNumber(sprite, "screenY", sprite.y)
+        game.onUpdate( () => {
+            let x = sprites.readDataNumber(sprite, "x")
+            let y = sprites.readDataNumber(sprite, "y")
+            let cameraLeft = scene.cameraProperty(CameraProperty.Left)
+            let cameraTop = scene.cameraProperty(CameraProperty.Top)
+            sprite.setPosition(x + cameraLeft, y + cameraTop)
+        })
+    }
+
+    /**
+    * Set the position of a sprite that is relative to camera and can overlap
+    */
+    //% blockId=setPositionOfSpriteRelativeToCamera
+    //% block="set $sprite position relative to camera a x:$x y:$y"
+    //% group="Sprite"
+    //% sprite.defl=mySprite
+    //% sprite.shadow=variables_get
+    //% weight=1
+    export function setPositionOfSpriteRelativeToCamera(sprite: Sprite, x: number, y: number) {
+        if (sprites.readDataBoolean(sprite, "relativeToCamera")) {
+            sprites.setDataNumber(sprite, "screenX", x)
+            sprites.setDataNumber(sprite, "screenY", y)
+        }
+    }
 
 }
 
