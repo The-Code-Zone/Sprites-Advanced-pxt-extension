@@ -239,18 +239,18 @@ namespace spriteutils {
     //% on.shadow="toggleOnOff"
     //% weight=2
     export function setRelativeToCameraAndOverlapable(sprite: Sprite, on: boolean) {
-        sprite.setFlag(SpriteFlag.GhostThroughSprites, false)
-        sprite.setFlag(SpriteFlag.GhostThroughWalls, true)
-        sprite.setFlag(SpriteFlag.GhostThroughTiles, true)
-        sprites.setDataBoolean(sprite, "relativeToCamera", true)
-        sprites.setDataNumber(sprite, "screenX", sprite.x)
-        sprites.setDataNumber(sprite, "screenY", sprite.y)
+        sprite.setFlag(SpriteFlag.GhostThroughSprites, false);
+        sprite.setFlag(SpriteFlag.GhostThroughWalls, true);
+        sprite.setFlag(SpriteFlag.GhostThroughTiles, true);
+        sprites.setDataBoolean(sprite, "relativeToCamera", true);
+        sprites.setDataNumber(sprite, "screenX", sprite.x);
+        sprites.setDataNumber(sprite, "screenY", sprite.y);
         game.onUpdate( () => {
-            let x = sprites.readDataNumber(sprite, "screenX")
-            let y = sprites.readDataNumber(sprite, "screenY")
-            let cameraLeft = scene.cameraProperty(CameraProperty.Left)
-            let cameraTop = scene.cameraProperty(CameraProperty.Top)
-            sprite.setPosition(x + cameraLeft, y + cameraTop)
+            let x = sprites.readDataNumber(sprite, "screenX");
+            let y = sprites.readDataNumber(sprite, "screenY");
+            let cameraLeft = scene.cameraProperty(CameraProperty.Left);
+            let cameraTop = scene.cameraProperty(CameraProperty.Top);
+            sprite.setPosition(x + cameraLeft, y + cameraTop);
         })
     }
 
@@ -265,8 +265,25 @@ namespace spriteutils {
     //% weight=1
     export function setPositionOfSpriteRelativeToCamera(sprite: Sprite, x: number, y: number) {
         if (sprites.readDataBoolean(sprite, "relativeToCamera")) {
-            sprites.setDataNumber(sprite, "screenX", x)
-            sprites.setDataNumber(sprite, "screenY", y)
+            sprites.setDataNumber(sprite, "screenX", x);
+            sprites.setDataNumber(sprite, "screenY", y);
+        }
+    }
+
+    /**
+    * Destroys all sprites of the given sprite's kind except the given sprite
+    */
+    //% blockId=destroyAllOtherSpritesOfThisKind
+    //% block="destroy all other sprites of same kind as $sprite"
+    //% group="Sprite"
+    //% sprite.defl=mySprite
+    //% sprite.shadow=variables_get
+    //% weight=3
+    export function destroyAllOtherSpritesOfThisKind(sprite: Sprite) {
+        for (let otherSprite of sprites.allOfKind(sprite.kind())){
+            if (otherSprite != sprite){
+                otherSprite.destroy();
+            }
         }
     }
 
