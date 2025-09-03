@@ -258,7 +258,7 @@ namespace spriteutils {
     * Set the position of a sprite that is relative to camera and can overlap
     */
     //% blockId=setPositionOfSpriteRelativeToCamera
-    //% block="set $sprite position relative to camera a x:$x y:$y"
+    //% block="set $sprite position relative to camera x:$x y:$y"
     //% group="Sprite"
     //% sprite.defl=mySprite
     //% sprite.shadow=variables_get
