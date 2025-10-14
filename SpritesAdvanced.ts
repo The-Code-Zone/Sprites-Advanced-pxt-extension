@@ -287,6 +287,20 @@ namespace spriteutils {
         }
     }
 
+    /**
+    * Sets velocity of sprite moving it towards the given point, faster the further it is from said point
+    */
+    //% blockId=lerpMovement
+    //% block="lerp $sprite towards x: $targetX y: $targetY"
+    //% group="Sprite"
+    //% sprite.defl=mySprite
+    //% sprite.shadow=variables_get
+    //% weight=56
+    export function lerpMovement(sprite: Sprite, targetX: number, targetY: number) {
+        sprite.vx = targetX - sprite.x;
+        sprite.vy = targetY - sprite.y;
+    }
+
 }
 
 namespace sprites{
