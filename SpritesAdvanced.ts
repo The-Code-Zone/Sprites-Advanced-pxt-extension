@@ -10,6 +10,16 @@ namespace Math {
         return Math.sign(num);
     }
 
+    /**
+     * Returns the value of pi
+     */
+    //% blockId=getPi
+    //% block="π"
+    //% weight=50
+    export function getPi(): number {
+        return Math.PI
+    }
+
 }
 
 namespace spriteutils {
@@ -299,6 +309,25 @@ namespace spriteutils {
     export function lerpMovement(sprite: Sprite, targetX: number, targetY: number) {
         sprite.vx = targetX - sprite.x;
         sprite.vy = targetY - sprite.y;
+    }
+
+    /**
+    * Returns true if the given sprite is moving
+    */
+    //% blockId=isMoving
+    //% block="$sprite is moving"
+    //% group="Sprite"
+    //% sprite.defl=mySprite
+    //% sprite.shadow=variables_get
+    //% weight=1
+
+    export function isMoving(sprite: Sprite): boolean {
+        if (sprite.vx != 0 || sprite.vy != 0) {
+            return true
+        }
+        else {
+            return false
+        }
     }
 
 }
