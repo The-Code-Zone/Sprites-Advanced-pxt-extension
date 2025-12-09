@@ -330,7 +330,27 @@ namespace spriteutils {
         }
     }
 
+    /**
+    * Continually updates the rotation angle of a sprite based on its heading
+    */
+    //% blockId=continuallyUpdateHeading
+    //% block="continually update $sprite angle based on heading || with offset $angleOffset"
+    //% group="Sprite"
+    //% sprite.defl=mySprite
+    //% sprite.shadow=variables_get
+    //% weight=1
+
+    export function continuallyUpdateHeading(sprite: Sprite, angleOffset = 0): void { 
+        game.onUpdate( () => {
+            let angleInRads = spriteutils.heading(sprite)
+            let angle = spriteutils.radiansToDegrees(angleInRads)
+            transformSprites.rotateSprite(sprite, angle + angleOffset)
+        })
+    }
+
+
 }
+
 
 namespace sprites{
 
