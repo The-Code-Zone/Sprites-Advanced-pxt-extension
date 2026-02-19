@@ -354,7 +354,13 @@ namespace spriteutils {
      * @param distance Distance to move in pixels
      * @param angleRadians Angle in radians (0 = up, PI/2 = right, PI = down, 3*PI/2 = left)
      */
-    function moveAtAngle(sprite: Sprite, distance: number, angleRadians: number) {
+    //% blockId=moveAtAngle
+    //% block="move $sprite $distance steps at angle $angleRadians"
+    //% group="Sprite"
+    //% sprite.defl=mySprite
+    //% sprite.shadow=variables_get
+    //% weight=1
+    export function moveAtAngle(sprite: Sprite, distance: number, angleRadians: number) {
         // Subtract PI/2 to rotate coordinate system so 0 = up
         let adjustedAngle = angleRadians - Math.PI / 2;
         let dx = Math.cos(adjustedAngle) * distance;
