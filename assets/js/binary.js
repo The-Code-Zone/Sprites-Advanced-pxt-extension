@@ -1,4 +1,4 @@
-// meta={"simUrl":"/simulator.html","cdnUrl":"/","version":"0.1.14","target":"arcade","targetVersion":"2.0.3","repo":"tomhausen/sprites-advanced"}
+// meta={"simUrl":"/simulator.html","cdnUrl":"/","version":"0.1.15","target":"arcade","targetVersion":"2.0.3","repo":"tomhausen/sprites-advanced"}
 // total=1245965 new=6.00% cached=88.35% other=5.65%
 (function (ectx) {
 'use strict';
@@ -429,7 +429,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P22899(s) {
+function _main___P27060(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -827,16 +827,16 @@ switch (step) {
     s.callLocIdx = 62; s.pc = 36; return s.tmp_0;
   case 36:
     r0 = s.retval;
-    globals.framesPerSecond___22418 = (0);
-    globals.deltaTime___22420 = (0);
+    globals.framesPerSecond___26579 = (0);
+    globals.deltaTime___26581 = (0);
     s.tmp_0 = game_onUpdate__P3041_mk(s);
-    s.tmp_0.arg0 = spriteutils_inline__P22422;
+    s.tmp_0.arg0 = spriteutils_inline__P26583;
     s.callLocIdx = 63; s.pc = 37; return s.tmp_0;
   case 37:
     r0 = s.retval;
     s.tmp_0 = game_onUpdateInterval__P3042_mk(s);
     s.tmp_0.arg0 = 1000;
-    s.tmp_0.arg1 = spriteutils_inline__P22426;
+    s.tmp_0.arg1 = spriteutils_inline__P26587;
     s.callLocIdx = 64; s.pc = 38; return s.tmp_0;
   case 38:
     r0 = s.retval;
@@ -844,13 +844,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P22899.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"test.ts","functionName":"<main>","argumentNames":[]}
-_main___P22899.continuations = [  ]
+_main___P27060.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"test.ts","functionName":"<main>","argumentNames":[]}
+_main___P27060.continuations = [  ]
 
-function _main___P22899_mk(s) {
+function _main___P27060_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P22899, depth: s.depth + 1,
+        parent: s, fn: _main___P27060, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1389,7 +1389,7 @@ function gameOverConfig_inline__P5039_mk(s) {
 
 
 
-function spriteutils_inline__P22422(s) {
+function spriteutils_inline__P26583(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1399,18 +1399,18 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = (globals.framesPerSecond___22418 + 1);
-    globals.framesPerSecond___22418 = (r0);
+    r0 = (globals.framesPerSecond___26579 + 1);
+    globals.framesPerSecond___26579 = (r0);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-spriteutils_inline__P22422.info = {"start":523,"length":40,"line":28,"column":18,"endLine":30,"endColumn":5,"fileName":"SpritesAdvanced.ts","functionName":"inline","argumentNames":[]}
+spriteutils_inline__P26583.info = {"start":523,"length":40,"line":28,"column":18,"endLine":30,"endColumn":5,"fileName":"SpritesAdvanced.ts","functionName":"inline","argumentNames":[]}
 
-function spriteutils_inline__P22422_mk(s) {
+function spriteutils_inline__P26583_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: spriteutils_inline__P22422, depth: s.depth + 1,
+        parent: s, fn: spriteutils_inline__P26583, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
 } }
 
@@ -1418,7 +1418,7 @@ function spriteutils_inline__P22422_mk(s) {
 
 
 
-function spriteutils_inline__P22426(s) {
+function spriteutils_inline__P26587(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1428,19 +1428,19 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = (1000 / globals.framesPerSecond___22418);
-    globals.deltaTime___22420 = (r0);
-    globals.framesPerSecond___22418 = (0);
+    r0 = (1000 / globals.framesPerSecond___26579);
+    globals.deltaTime___26581 = (r0);
+    globals.framesPerSecond___26579 = (0);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-spriteutils_inline__P22426.info = {"start":597,"length":85,"line":31,"column":32,"endLine":34,"endColumn":5,"fileName":"SpritesAdvanced.ts","functionName":"inline","argumentNames":[]}
+spriteutils_inline__P26587.info = {"start":597,"length":85,"line":31,"column":32,"endLine":34,"endColumn":5,"fileName":"SpritesAdvanced.ts","functionName":"inline","argumentNames":[]}
 
-function spriteutils_inline__P22426_mk(s) {
+function spriteutils_inline__P26587_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: spriteutils_inline__P22426, depth: s.depth + 1,
+        parent: s, fn: spriteutils_inline__P26587, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
 } }
 
@@ -42424,7 +42424,7 @@ const sprites_BaseSpriteSayRenderer__C2260_VT = mkVTable({
   },
 });
 
-const breakpoints = setupDebugger(1, ["framesPerSecond___22418","deltaTime___22420"])
+const breakpoints = setupDebugger(1, ["framesPerSecond___26579","deltaTime___26581"])
 
-return _main___P22899
+return _main___P27060
 })
