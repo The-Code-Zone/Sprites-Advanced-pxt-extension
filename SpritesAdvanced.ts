@@ -327,6 +327,10 @@ namespace spriteutils {
             sprites.setDataSprite(follower, "sprite to follow", target)
             game.onUpdate( () => {
                 let updatedTarget = sprites.readDataSprite(follower, "sprite to follow")
+                if (spriteutils.isDestroyed(updatedTarget)){
+                    stopFollowing(follower)
+                    return
+                }
                 follower.setPosition(updatedTarget.x, updatedTarget.y)
             })
         }
