@@ -312,6 +312,43 @@ namespace spriteutils {
     }
 
     /**
+    * The given sprite will tightly follow the target sprite. Stop with the stop following block
+    */
+    //% blockId=tightlyFollow
+    //% block="$follower tightly follows $target"
+    //% group="Sprite"
+    //% follower.defl=myEnemy
+    //% follower.shadow=variables_get
+    //% target.defl=mySprite
+    //% target.shadow=variables_get
+    //% weight=51
+    export function tightlyFollow(follower: Sprite, target: Sprite) {
+        if (!sprites.readDataSprite(follower, "sprite to follow")) {
+            sprites.setDataSprite(follower, "sprite to follow", target)
+            game.onUpdate( () => {
+                let updatedTarget = sprites.readDataSprite(follower, "sprite to follow")
+                follower.setPosition(updatedTarget.x, updatedTarget.y)
+            })
+        }
+        else {
+            sprites.setDataSprite(follower, "sprite to follow", target)
+        }
+    }
+
+    /**
+    * Stops the sprite following when using tightly follow
+    */
+    //% blockId=stopFollowing
+    //% block="$sprite stops following"
+    //% group="Sprite"
+    //% sprite.defl=myEnemy
+    //% sprite.shadow=variables_get
+    //% weight=50
+    export function stopFollowing(sprite: Sprite){
+        sprites.setDataSprite(sprite, "sprite to follow", null)
+    }
+
+    /**
     * Returns true if the given sprite is moving
     */
     //% blockId=isMoving
