@@ -315,14 +315,15 @@ namespace spriteutils {
     * The given sprite will tightly follow the target sprite. Stop with the stop following block
     */
     //% blockId=tightlyFollow
-    //% block="$follower tightly follows $target"
+    //% block="$follower tightly follows $target||with offset x:$xOffset y:$yOffset"
+    //% inlineInputMode=inline
     //% group="Sprite"
     //% follower.defl=myEnemy
     //% follower.shadow=variables_get
     //% target.defl=mySprite
     //% target.shadow=variables_get
     //% weight=51
-    export function tightlyFollow(follower: Sprite, target: Sprite) {
+    export function tightlyFollow(follower: Sprite, target: Sprite, xOffset: number = 0, yOffset: number = 0) {
         if (!sprites.readDataSprite(follower, "sprite to follow")) {
             sprites.setDataSprite(follower, "sprite to follow", target)
             game.onUpdate( () => {
@@ -331,7 +332,7 @@ namespace spriteutils {
                     stopFollowing(follower)
                     return
                 }
-                follower.setPosition(updatedTarget.x, updatedTarget.y)
+                follower.setPosition(updatedTarget.x + xOffset, updatedTarget.y + yOffset)
             })
         }
         else {
