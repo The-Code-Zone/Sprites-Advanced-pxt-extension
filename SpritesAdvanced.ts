@@ -218,6 +218,28 @@ namespace spriteutils {
     }
 
     /**
+     * Get the angle, in radians, pointing from the first point towards the second point.
+     * Uses the same convention as "move at angle": 0 = up, PI/2 = right, PI = down, 3*PI/2 = left
+     * @param x1 x of the starting point
+     * @param y1 y of the starting point
+     * @param x2 x of the point being looked at
+     * @param y2 y of the point being looked at
+     */
+    //% blockId=getAngleBetweenPoints
+    //% block="get angle from x: $x1 y: $y1 to x: $x2 y: $y2"
+    //% group="General"
+    //% inlineInputMode=inline
+    //% weight=20
+    export function getAngleBetweenPoints(x1: number, y1: number, x2: number, y2: number): number {
+        // Screen y grows downwards, so "up" is -y. atan2(dx, -dy) gives 0 = up, clockwise.
+        let angle = Math.atan2(x2 - x1, y1 - y2)
+        if (angle < 0) {
+            angle += 2 * Math.PI
+        }
+        return angle
+    }
+
+    /**
     * Make the sprite follow another sprite and rotate its image based on it's velocity
     */
     //% blockId=followAndRotate
