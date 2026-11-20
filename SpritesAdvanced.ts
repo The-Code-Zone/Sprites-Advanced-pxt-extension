@@ -433,32 +433,11 @@ namespace spriteutils {
         sprite.y += dy;
     }
 
-}
-
-
-namespace sprites{
-
-    /**
-    * Make this sprite follow the target sprite.
-    * Duplicate function to allow blocks to access turnRate param
-    */
-    //% group="Physics" weight=9
-    //% sprite.defl=myEnemy
-    //% sprite.shadow=variables_get
-    //% spriteToFollow.defl=mySprite
-    //% spriteToFollow.shadow=variables_get
-    //% blockId=followSprite
-    //% block="set %sprite follow %spriteToFollow|| with speed %speed and turn rate %turnRate"
-
-    export function followSprite(sprite: Sprite, spriteToFollow: Sprite, speed = 100, turnRate = 400): void {
-        sprite.follow(spriteToFollow, speed, turnRate)
-    }
-
     /**
      * Make two ball sprites bounce off each other.
      * Call this when the sprites overlap.
      */
-    //% blockId=ballphysics_bounce
+    //% blockId=bounce
     //% block="bounce $a off $b"
     //% a.shadow=variables_get a.defl=ball1
     //% b.shadow=variables_get b.defl=ball2
@@ -504,5 +483,25 @@ namespace sprites{
         }
     }
 
+}
+
+
+namespace sprites{
+
+    /**
+    * Make this sprite follow the target sprite.
+    * Duplicate function to allow blocks to access turnRate param
+    */
+    //% group="Physics" weight=9
+    //% sprite.defl=myEnemy
+    //% sprite.shadow=variables_get
+    //% spriteToFollow.defl=mySprite
+    //% spriteToFollow.shadow=variables_get
+    //% blockId=followSprite
+    //% block="set %sprite follow %spriteToFollow|| with speed %speed and turn rate %turnRate"
+
+    export function followSprite(sprite: Sprite, spriteToFollow: Sprite, speed = 100, turnRate = 400): void {
+        sprite.follow(spriteToFollow, speed, turnRate)
+    }
 
 }
