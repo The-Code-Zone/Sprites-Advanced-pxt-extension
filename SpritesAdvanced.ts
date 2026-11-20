@@ -454,4 +454,55 @@ namespace sprites{
         sprite.follow(spriteToFollow, speed, turnRate)
     }
 
+    /**
+     * Make two ball sprites bounce off each other.
+     * Call this when the sprites overlap.
+     */
+    //% blockId=ballphysics_bounce
+    //% block="bounce $a off $b"
+    //% a.shadow=variables_get a.defl=ball1
+    //% b.shadow=variables_get b.defl=ball2
+    //% weight=100
+    export function bounce(a: Sprite, b: Sprite): void {
+        if (!a || !b || a === b) return
+
+        // Vector from a to b (between centres)
+        let dx = b.x - a.x
+        let dy = b.y - a.y
+        let dist = Math.sqrt(dx * dx + dy * dy)
+        if (dist == 0) {
+            dx = 1
+            dy = 0
+            dist = 1
+        }
+
+        // Collision normal (unit vector)
+        const nx = dx / dist
+        const ny = dy / dist
+
+        // Velocity of each ball along the normal
+        const aN = a.vx * nx + a.vy * ny
+        const bN = b.vx * nx + b.vy * ny
+
+        // Only bounce if they are moving towards each other
+        if (aN - bN > 0) {
+            // Equal masses: swap the normal components of velocity
+            const diff = bN - aN
+            a.vx += diff * nx
+            a.vy += diff * ny
+            b.vx -= diff * nx
+            b.vy -= diff * ny
+        }
+
+        // Push them apart so they don't stay overlapped and stick
+        const overlap = (a.width + b.width) / 2 - dist
+        if (overlap > 0) {
+            a.x -= nx * overlap / 2
+            a.y -= ny * overlap / 2
+            b.x += nx * overlap / 2
+            b.y += ny * overlap / 2
+        }
+    }
+
+
 }
