@@ -437,12 +437,12 @@ namespace spriteutils {
      * Make two ball sprites bounce off each other.
      * Call this when the sprites overlap.
      */
-    //% blockId=bounce
+    //% blockId=elastic_ball_collision
     //% block="bounce $a off $b"
     //% a.shadow=variables_get a.defl=ball1
     //% b.shadow=variables_get b.defl=ball2
     //% weight=100
-    export function bounce(a: Sprite, b: Sprite): void {
+    export function elastic_ball_collision(a: Sprite, b: Sprite): void {
         if (!a || !b || a === b) return
 
         // Vector from a to b (between centres)
